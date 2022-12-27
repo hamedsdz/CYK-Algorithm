@@ -1,21 +1,34 @@
+#
+# Created By Hamed Sadeghzadeh
+# 1401/10/06
+#
+# This App Is For Calculating CYK Algorithm
+# In This App We Are Using `collections` Library To Make Lists Or Sets Collection
+# Steps:
+# 1. Make Grammar:
+#   1.1. Get Variables From User
+#   1.2. Get Rules Of Each Variable
+# 2. Define CYN Function:
+#   2.1. Make CYK Table
+#   2.2. Return CYK Table
+# 3. Get String From User To Check If It Can Be Created Using This Algorithm
+# 4. Search For String's Value To Be 'S' In CYK Table
+#
+# Libraries
 from collections import defaultdict
 
-# The user gives the set of variables, the first one is S
+# The User Gives The Set Of Variables, The First One Is 'S'
 variables = []
 for x in range(int(input("Enter number of variables: "))):
     variables.append(input("Var[" + str(x) + "] in UPPERCASE: ")[0])
 
-# The user gives the set of rules
-# The terminals are all the characters that are not variables
+# The Terminals Are All The Characters That Are Not Variables
 rules = defaultdict(list)
 for x in (variables):
     rules_var = []
     for y in range(int(input("Number of rules for " + x + ": "))):
         rules_var.append(input(x + " = "))
     rules[x] = rules_var
-
-# We start at S and with an empty word
-# word = cfg('S', rules, variables, '')
 
 
 def cykFun(substr, rules, cyk, x):
@@ -44,7 +57,7 @@ for x in range(1, len(string)+1):
             cyk = cykFun(substr, rules, cyk, x)
 
 
-# Check availability
+# Check Availability
 def checkAvailable():
     if cyk[string]:
         for ob in cyk[string]:
